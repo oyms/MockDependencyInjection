@@ -1,0 +1,26 @@
+<Project>
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591;CA1822</NoWarn>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <Product>MockDependencyInjection</Product>
+        <Authors>Skaar</Authors>
+        <PackageTags>Mock;UnitTesting</PackageTags>
+        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeSource>false</IncludeSource>
+        <RepositoryUrl>https://github.com/oyms</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageIcon>logo_600px.png</PackageIcon>
+        <PackageReleaseNotes>
+            1.0.0: Initial.
+        </PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\..\resources\udir_logo_600px.png" Pack="true" PackagePath="" />
+        <None Include="..\..\README.md" Pack="true" PackagePath="/" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    </ItemGroup>
+</Project> 
