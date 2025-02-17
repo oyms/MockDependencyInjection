@@ -12,6 +12,17 @@ namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
 
             result.ShouldNotBeNull();
         }
+
+        [Fact]
+        public void Resolve_MultipleCalls_ReturnsSameInstance()
+        {
+            var fixture = IoC.CreateFixture<TestTarget>();
+            
+            var result0 = fixture.Resolve();
+            var result1 = fixture.Resolve();
+            
+            result0.ShouldBeSameAs(result1);
+        }
     }
     file class TestTarget{}
 }

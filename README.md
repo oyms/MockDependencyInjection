@@ -17,3 +17,6 @@ tool create the neccessary mocks needed to create an instance of the test target
     - [ ] For concrete instances
     - [ ] For nearest fit to a parameter 
 - [ ] A NSubstitute implementation
+- [ ] Include a service provider/DI container
+- [ ] Verify that all setups are a part of the constructor
+- [ ] Select the best matching constructor
