@@ -6,13 +6,18 @@ namespace Skaar.MockDependencyInjection.Moq
 {
     public class Fixture<T> : Skaar.MockDependencyInjection.Fixture<T> where T : class
     {
-        public Mock<TA> Arg<TA>() where TA : class
+        public Mock<TA> Arg<TA>(
+            MockBehavior behavior = MockBehavior.Loose,
+            bool callBase = true,
+            DefaultValueProvider? defaultValueProvider = null
+            ) where TA : class
         {
             var key = ResolverSpecification.New<TA>();
             if (Resolvers[key] is not MockArgumentResolver resolver)
             {
                 AssertNotResolved();
-                resolver = new MockArgumentResolver(key);
+                var config = new MoqConfig(behavior, callBase, defaultValueProvider);
+                resolver = new MockArgumentResolver(key, config);
                 Resolvers.Add(resolver);
             }
             return (Mock<TA>)resolver.Mock;

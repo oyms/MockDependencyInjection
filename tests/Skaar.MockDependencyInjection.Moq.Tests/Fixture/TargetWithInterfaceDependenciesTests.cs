@@ -1,3 +1,4 @@
+using Moq;
 using Shouldly;
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
@@ -24,6 +25,27 @@ namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
 
             result.Dep0.ShouldBe(dep0.Object);
             result.Dep1.ShouldBe(dep1.Object);
+        }    
+        
+        [Fact]
+        public void Resolve_WithSetupWithMockBehaviour_SetsBehaviourOtherwiseDefault()
+        {
+            var fixture = IoC.CreateFixture<TestTarget>();
+            var dep0 = fixture.Arg<IDependency0>();
+            var dep1 = fixture.Arg<IDependency1>(
+                behavior: MockBehavior.Strict, 
+                callBase: false,
+                defaultValueProvider: DefaultValueProvider.Empty);
+            
+            var result = fixture.Resolve();
+
+            dep0.Behavior.ShouldBe(MockBehavior.Loose);
+            dep0.CallBase.ShouldBe(true);
+            dep0.DefaultValueProvider.ShouldBe(DefaultValueProvider.Mock);
+            
+            dep1.Behavior.ShouldBe(MockBehavior.Strict);
+            dep1.CallBase.ShouldBe(false);
+            dep1.DefaultValueProvider.ShouldBe(DefaultValueProvider.Empty);
         }
 
         public interface IDependency0
