@@ -1,7 +1,7 @@
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
 
-namespace Skaar.MockDependencyInjection
+namespace Skaar.MockDependencyInjection.Resolving
 {
     class ArgumentResolverCollection : IArgumentResolverCollection
     {
@@ -57,7 +57,7 @@ namespace Skaar.MockDependencyInjection
             {
                 yield return _resolvers[key];
             }
-            foreach (var key in _resolvers.Keys.Where(k => k.ArgumentType.IsAssignableFrom(type))
+            foreach (var key in _resolvers.Keys.Where(k => k.ArgumentType.IsAssignableTo(type))
                          .Where(k => k.ArgumentName is null))
             {
                 yield return _resolvers[key];

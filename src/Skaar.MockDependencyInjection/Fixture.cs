@@ -1,5 +1,6 @@
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
+using Skaar.MockDependencyInjection.Resolving;
 using System.Reflection;
 
 namespace Skaar.MockDependencyInjection
@@ -9,15 +10,23 @@ namespace Skaar.MockDependencyInjection
         private T? _resolved;
         private readonly Type _targetType = typeof(T);
 
+        public TI Arg<TI>(TI instance)
+        {
+            AssertNotResolved();
+            var resolver = InstanceArgumentResolver.From(instance);
+            Resolvers.Add(resolver);
+            return instance;
+        }
+
         protected virtual T CreateInstance()
         {
             AssessFeasibility();
-            //Find constructor
+            
             var constructors = _targetType.GetConstructors(BindingFlags.Public|BindingFlags.Instance);
             var constructor = SelectConstructor(constructors);
-            //Require arguments
+            
             var args = constructor.GetParameters().Select(GetArgumentInstance);
-            //Call constructor
+            
             return (T) constructor.Invoke(args.ToArray())!;
         }
 
