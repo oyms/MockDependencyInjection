@@ -28,6 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\Skaar.MockDependencyInjection.AutoFixture\Skaar.MockDependencyInjection.AutoFixture.csproj" />
       <ProjectReference Include="..\..\src\Skaar.MockDependencyInjection.Moq\Skaar.MockDependencyInjection.Moq.csproj" />
     </ItemGroup>
 
