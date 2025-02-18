@@ -4,9 +4,9 @@ namespace Skaar.MockDependencyInjection.Resolving
 {
     class InstanceArgumentResolver(ResolverSpecification key, object instance) : IArgumentResolver
     {
-        public static IArgumentResolver From<T>(T instance) where T: notnull
+        public static IArgumentResolver From<T>(T instance, string? parameterName = null) where T: notnull
         {
-            return new InstanceArgumentResolver(ResolverSpecification.New<T>(), instance);
+            return new InstanceArgumentResolver(ResolverSpecification.New<T>(parameterName), instance);
         }
 
         public ResolverSpecification Key { get; } = key;

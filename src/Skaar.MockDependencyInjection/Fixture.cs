@@ -1,21 +1,30 @@
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
 using Skaar.MockDependencyInjection.Resolving;
+using System.ComponentModel.Design;
 using System.Reflection;
+using ServiceContainer = Skaar.MockDependencyInjection.Resolving.ServiceContainer;
 
 namespace Skaar.MockDependencyInjection
 {
-    public abstract class Fixture<T> where T : class
+    public abstract class Fixture<T, TFixture> where T : class where TFixture: Fixture<T, TFixture>
     {
         private T? _resolved;
         private readonly Type _targetType = typeof(T);
+        private ServiceContainerCollection _serviceContainers = new();
 
-        public TI Arg<TI>(TI instance)
+        public TI Arg<TI>(TI instance, string? parameterName = null) where TI : notnull
         {
             AssertNotResolved();
-            var resolver = InstanceArgumentResolver.From(instance);
+            var resolver = InstanceArgumentResolver.From(instance, parameterName);
             Resolvers.Add(resolver);
             return instance;
+        }
+
+        public TFixture Use(ServiceContainer serviceContainer)
+        {
+            _serviceContainers.Add(serviceContainer);
+            return (TFixture) this;
         }
 
         protected virtual T CreateInstance()
@@ -55,7 +64,7 @@ namespace Skaar.MockDependencyInjection
             if (_targetType.IsGenericTypeDefinition)
             {
                 throw new TypeCannotBeCreatedException(
-                    $"The type {_targetType.Name} is is a generic type definition and cannot be created.");
+                    $"The type {_targetType.Name} is a generic type definition and cannot be created.");
             }
         }
         
@@ -73,6 +82,10 @@ namespace Skaar.MockDependencyInjection
             if(Resolvers.TryResolve(key, out var resolver))
             {
                 return resolver.Resolve();
+            }
+            if (_serviceContainers.TryResolve(key.ArgumentType, out var instance))
+            {
+                return instance;
             }
             resolver = CreateArgumentResolver(parameter);
             Resolvers.Add(resolver);

@@ -9,14 +9,15 @@ tool create the neccessary mocks needed to create an instance of the test target
 
 
 ## TODO
-- [ ] Create the base classes and contracts
-- [ ] A basic Moq implementation
-  - [ ] Define parameters/arguments
-    - [ ] For interfaces
-      - [ ] Defining mock behaviour (as an overload) 
-    - [ ] For concrete instances
-    - [ ] For nearest fit to a parameter 
+- [x] Create the base classes and contracts
+- [x] A basic Moq implementation
+  - [x] Define parameters/arguments
+    - [x] For interfaces
+      - [x] Defining mock behaviour (as an overload) 
+    - [x] For concrete instances
+    - [x] For nearest fit to a parameter
+    - [ ] For classes with constructors (recursive)
 - [ ] A NSubstitute implementation
-- [ ] Include a service provider/DI container
+- [x] Include a service provider/DI container
 - [ ] Verify that all setups are a part of the constructor
 - [ ] Select the best matching constructor
