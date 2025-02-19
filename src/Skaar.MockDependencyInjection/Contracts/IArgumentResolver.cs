@@ -1,8 +1,6 @@
-namespace Skaar.MockDependencyInjection.Contracts
+namespace Skaar.MockDependencyInjection.Contracts;
+
+public interface IArgumentResolver: IResolvable
 {
-    public interface IArgumentResolver
-    {
-        ResolverSpecification Key { get; }
-        object Resolve();
-    }
+    ResolverSpecification Key { get; }
 }

@@ -1,26 +1,25 @@
 using Shouldly;
 using Skaar.MockDependencyInjection.Exceptions;
 
-namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
+namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
+
+public class InvalidTargetTests
 {
-    public class InvalidTargetTests
+    [Fact]
+    public void Resolve_FromInterface_Throws()
     {
-        [Fact]
-        public void Resolve_FromInterface_Throws()
-        {
-            var fixture = IoC.CreateFixture<ITestTarget>();
+        var fixture = IoC.CreateFixture<ITestTarget>();
             
-            Should.Throw<TypeCannotBeCreatedException>(() => fixture.Resolve());
-        }    
+        Should.Throw<TypeCannotBeCreatedException>(() => fixture.Resolve());
+    }    
         
-        [Fact]
-        public void Resolve_FromAbstractClass_Throws()
-        {
-            var fixture = IoC.CreateFixture<TestTarget>();
+    [Fact]
+    public void Resolve_FromAbstractClass_Throws()
+    {
+        var fixture = IoC.CreateFixture<TestTarget>();
             
-            Should.Throw<TypeCannotBeCreatedException>(() => fixture.Resolve());
-        }
-        public interface ITestTarget;
-        public abstract class TestTarget : ITestTarget;
+        Should.Throw<TypeCannotBeCreatedException>(() => fixture.Resolve());
     }
+    public interface ITestTarget;
+    public abstract class TestTarget : ITestTarget;
 }

@@ -1,28 +1,27 @@
 using Shouldly;
 
-namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
+namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
+
+public class TargetWithoutDependenciesTests
 {
-    public class TargetWithoutDependenciesTests
+    [Fact]
+    public void Resolve_WithoutSetup_ReturnsInstance()
     {
-        [Fact]
-        public void Resolve_WithoutSetup_ReturnsInstance()
-        {
-            var fixture = IoC.CreateFixture<TestTarget>();
-            var result = fixture.Resolve();
+        var fixture = IoC.CreateFixture<TestTarget>();
+        var result = fixture.Resolve();
 
-            result.ShouldNotBeNull();
-        }
-
-        [Fact]
-        public void Resolve_MultipleCalls_ReturnsSameInstance()
-        {
-            var fixture = IoC.CreateFixture<TestTarget>();
-            
-            var result0 = fixture.Resolve();
-            var result1 = fixture.Resolve();
-            
-            result0.ShouldBeSameAs(result1);
-        }
+        result.ShouldNotBeNull();
     }
-    file class TestTarget{}
+
+    [Fact]
+    public void Resolve_MultipleCalls_ReturnsSameInstance()
+    {
+        var fixture = IoC.CreateFixture<TestTarget>();
+            
+        var result0 = fixture.Resolve();
+        var result1 = fixture.Resolve();
+            
+        result0.ShouldBeSameAs(result1);
+    }
 }
+file class TestTarget{}

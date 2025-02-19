@@ -16,7 +16,7 @@ tool create the neccessary mocks needed to create an instance of the test target
       - [x] Defining mock behaviour (as an overload) 
     - [x] For concrete instances
     - [x] For nearest fit to a parameter
-    - [ ] For classes with constructors (recursive)
+    - [x] For classes with constructors (recursive)
     - [ ] Protected setup
 - [ ] A NSubstitute implementation
 - [ ] A RhinoMock implementation

@@ -1,28 +1,27 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Skaar.MockDependencyInjection.Resolving
+namespace Skaar.MockDependencyInjection.Resolving;
+
+class ServiceContainerCollection : ServiceContainer
 {
-    class ServiceContainerCollection : ServiceContainer
+    private List<ServiceContainer> _services = new();
+
+    public void Add(ServiceContainer serviceContainer)
     {
-        private List<ServiceContainer> _services = new();
-
-        public void Add(ServiceContainer serviceContainer)
-        {
-            _services.Add(serviceContainer);
-        }
+        _services.Add(serviceContainer);
+    }
         
-        public override bool TryResolve(Type type, [NotNullWhen(true)] out object? instance)
+    public override bool TryResolve(Type type, [NotNullWhen(true)] out object? instance)
+    {
+        foreach (var container in _services)
         {
-            foreach (var container in _services)
+            if (container.TryResolve(type, out instance))
             {
-                if (container.TryResolve(type, out instance))
-                {
-                    return true;
-                }
+                return true;
             }
-
-            instance = null;
-            return false;
         }
+
+        instance = null;
+        return false;
     }
 }

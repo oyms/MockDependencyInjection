@@ -1,33 +1,32 @@
 using Shouldly;
 
-namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
+namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
+
+public class InstanceSetupTests
 {
-    public class InstanceSetupTests
+    [Fact]
+    public void Arg_WithInstances_InjectsInstanceInTarget()
     {
-        [Fact]
-        public void Arg_WithInstances_InjectsInstanceInTarget()
-        {
-            var fixture = IoC.CreateFixture<TestTarget>();
-            var expected = new Implementation { Text = "Some text" };
+        var fixture = IoC.CreateFixture<TestTarget>();
+        var expected = new Implementation { Text = "Some text" };
 
-            var arg = fixture.Arg(expected);
-            var result = fixture.Resolve();
+        var arg = fixture.Arg(expected);
+        var result = fixture.Resolve();
             
-            arg.ShouldBeSameAs(expected);
-            result.Dep.ShouldBeSameAs(expected);
-        }
-        public interface IDependency
-        {
-            string Text { get; set; }
-        }
+        arg.ShouldBeSameAs(expected);
+        result.Dep.ShouldBeSameAs(expected);
     }
-    file class TestTarget(InstanceSetupTests.IDependency dep)
+    public interface IDependency
     {
-        public InstanceSetupTests.IDependency Dep { get; } = dep;
+        string Text { get; set; }
     }
+}
+file class TestTarget(InstanceSetupTests.IDependency dep)
+{
+    public InstanceSetupTests.IDependency Dep { get; } = dep;
+}
 
-    file class Implementation : InstanceSetupTests.IDependency
-    {
-        public string Text { get; set; }
-    }
+file class Implementation : InstanceSetupTests.IDependency
+{
+    public string Text { get; set; }
 }

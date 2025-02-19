@@ -1,31 +1,30 @@
 using Shouldly;
 using Skaar.MockDependencyInjection.Exceptions;
 
-namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture
+namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
+
+public class AllSetupIsUsedTests
 {
-    public class AllSetupIsUsedTests
+    [Fact]
+    public void Resolve_WhenPropertiesAreSetupThatIsNotUsed_Throws()
     {
-        [Fact]
-        public void Resolve_WhenPropertiesAreSetupThatIsNotUsed_Throws()
-        {
-            var fixture = IoC.CreateFixture<TestTarget>();
-            var a0 = fixture.Arg<I0>();
-            var a2 = fixture.Arg<I2>();
-            var unused = fixture.Arg<INotUsed>();
-            var alsoUnused = fixture.Arg<string>("notUsed", "NotExists");
+        var fixture = IoC.CreateFixture<TestTarget>();
+        var a0 = fixture.Arg<I0>();
+        var a2 = fixture.Arg<I2>();
+        var unused = fixture.Arg<INotUsed>();
+        var alsoUnused = fixture.Arg<string>("notUsed", "NotExists");
 
-            Should.Throw<UnusedSetupException>(() => fixture.Resolve());
-        }
-        
-        public interface I0;
-        public interface I1;
-        public interface I2;
-        public interface INotUsed;
+        Should.Throw<UnusedSetupException>(() => fixture.Resolve());
     }
-
-    file class TestTarget(
-        AllSetupIsUsedTests.I0 first,
-        AllSetupIsUsedTests.I1 second,
-        AllSetupIsUsedTests.I2 third
-        );
+        
+    public interface I0;
+    public interface I1;
+    public interface I2;
+    public interface INotUsed;
 }
+
+file class TestTarget(
+    AllSetupIsUsedTests.I0 first,
+    AllSetupIsUsedTests.I1 second,
+    AllSetupIsUsedTests.I2 third
+);
