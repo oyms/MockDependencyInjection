@@ -17,7 +17,16 @@ tool create the neccessary mocks needed to create an instance of the test target
     - [x] For concrete instances
     - [x] For nearest fit to a parameter
     - [ ] For classes with constructors (recursive)
+    - [ ] Protected setup
 - [ ] A NSubstitute implementation
+- [ ] A RhinoMock implementation
+- [ ] A FakeIt implementation
 - [x] Include a service provider/DI container
-- [ ] Verify that all setups are a part of the constructor
+- [x] Verify that all setups are a part of the constructor
 - [ ] Select the best matching constructor
+- [ ] Documentation
+  - [ ] Code
+  - [ ] Readme
+- [ ] Packaging
+  - [ ] Icon
+  - [ ] Publish script

@@ -33,15 +33,16 @@ namespace Skaar.MockDependencyInjection
             
             var constructors = _targetType.GetConstructors(BindingFlags.Public|BindingFlags.Instance);
             var constructor = SelectConstructor(constructors);
+
+            var args = GetConstructorArguments(constructor);
             
-            var args = constructor.GetParameters().Select(GetArgumentInstance);
-            
-            return (T) constructor.Invoke(args.ToArray())!;
+            return (T) constructor.Invoke(args)!;
         }
 
         public T Resolve() => _resolved ??= CreateInstance();
+
         protected IArgumentResolverCollection Resolvers { get; } = new ArgumentResolverCollection();
-        
+
         protected abstract IArgumentResolver  CreateArgumentResolver(ParameterInfo parameter);
 
         protected virtual ConstructorInfo SelectConstructor(IEnumerable<ConstructorInfo> constructors)
@@ -67,7 +68,7 @@ namespace Skaar.MockDependencyInjection
                     $"The type {_targetType.Name} is a generic type definition and cannot be created.");
             }
         }
-        
+
         protected void AssertNotResolved()
         {
             if (_resolved is not null)
@@ -76,20 +77,35 @@ namespace Skaar.MockDependencyInjection
             }
         }
 
-        private object GetArgumentInstance(ParameterInfo parameter)
+        private object[] GetConstructorArguments(ConstructorInfo constructor)
+        {
+            var allSetups = Resolvers.Keys.ToList();
+            var parameters = constructor.GetParameters();
+            var resolvers = parameters.Select(GetArgumentResolver).ToList();
+            var notUsed = allSetups.Except(resolvers.Select(r => r.Key)).ToArray();
+            if (notUsed.Any())
+            {
+                throw new UnusedSetupException(notUsed, constructor);
+            }
+            return resolvers.Select(r => r.Resolve()).ToArray();
+        }
+
+        private IArgumentResolver GetArgumentResolver(ParameterInfo parameter)
         {
             var key = new ResolverSpecification(parameter);
             if(Resolvers.TryResolve(key, out var resolver))
             {
-                return resolver.Resolve();
+                return resolver;
             }
             if (_serviceContainers.TryResolve(key.ArgumentType, out var instance))
             {
-                return instance;
+                var instanceArgumentResolver = new InstanceArgumentResolver(new ResolverSpecification(parameter), instance);
+                Resolvers.Add(instanceArgumentResolver);
+                return instanceArgumentResolver;
             }
             resolver = CreateArgumentResolver(parameter);
             Resolvers.Add(resolver);
-            return resolver.Resolve();
+            return resolver;
         }
     }
 }

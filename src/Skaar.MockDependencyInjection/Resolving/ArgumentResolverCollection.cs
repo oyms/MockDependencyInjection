@@ -12,9 +12,9 @@ namespace Skaar.MockDependencyInjection.Resolving
         public bool TryResolve(ResolverSpecification key, out IArgumentResolver? resolver)
         {
             //Find exact match
-            if(key.ArgumentName is not null)
+            if(key.ParameterName is not null)
             {
-                resolver = GetResolverByName(key.ArgumentName);
+                resolver = GetResolverByName(key.ParameterName);
                 if (resolver is not null)
                 {
                     if (!key.ArgumentType.IsAssignableFrom(resolver.Key.ArgumentType))
@@ -31,7 +31,7 @@ namespace Skaar.MockDependencyInjection.Resolving
 
         public void Add(IArgumentResolver resolver)
         {
-            var name = resolver.Key.ArgumentName;
+            var name = resolver.Key.ParameterName;
             if (name is not null && GetResolverByName(name) is not null)
             {
                 throw new DuplicateParameterSetupException(name);
@@ -42,23 +42,25 @@ namespace Skaar.MockDependencyInjection.Resolving
             }
         }
 
+        public IEnumerable<ResolverSpecification> Keys => _resolvers.Keys;
+
         private IArgumentResolver? GetResolverByName(string name) =>
-            _resolvers.Keys.Where(k => k.ArgumentName == name).ToArray().Length switch
+            _resolvers.Keys.Where(k => k.ParameterName == name).ToArray().Length switch
             {
                 0 => null,
-                1 => _resolvers[_resolvers.Keys.Where(k => k.ArgumentName == name).ToArray()[0]],
+                1 => _resolvers[_resolvers.Keys.Where(k => k.ParameterName == name).ToArray()[0]],
                 _ => throw new DuplicateParameterSetupException(name)
             };
 
         private IEnumerable<IArgumentResolver> GetResolverByType(Type type)
         {
             foreach (var key in _resolvers.Keys.Where(k => k.ArgumentType == type)
-                         .Where(k => k.ArgumentName is null))
+                         .Where(k => k.ParameterName is null))
             {
                 yield return _resolvers[key];
             }
             foreach (var key in _resolvers.Keys.Where(k => k.ArgumentType.IsAssignableTo(type))
-                         .Where(k => k.ArgumentName is null))
+                         .Where(k => k.ParameterName is null))
             {
                 yield return _resolvers[key];
             }
