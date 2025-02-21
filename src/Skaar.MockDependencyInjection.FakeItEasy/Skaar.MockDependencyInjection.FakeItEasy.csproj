@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>MockDependencyInjection.NSubstitute</PackageId>
-        <Description>The package for injecting NSubstitute-mocks into constructors.</Description>
+        <Description>The package for injectiong FakeItEasy-mocks into constructors.</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NSubstitute" Version="5.3.0" />
+        <PackageReference Include="FakeItEasy" Version="8.3.0" />
     </ItemGroup>
 
 </Project>

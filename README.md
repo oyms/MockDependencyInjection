@@ -19,7 +19,7 @@ tool create the neccessary mocks needed to create an instance of the test target
     - [x] For classes with constructors (recursive)
 - [x] A NSubstitute implementation
 - [ ] A RhinoMock implementation
-- [ ] A FakeIt implementation
+- [x] A FakeItEasy implementation
 - [x] Include a service provider/DI container
 - [x] Verify that all setups are a part of the constructor
 - [x] Select the best matching constructor

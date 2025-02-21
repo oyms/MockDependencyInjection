@@ -1,6 +1,6 @@
 using Shouldly;
 
-namespace Skaar.MockDependencyInjection.NSubstitute.Tests.Fixture;
+namespace Skaar.MockDependencyInjection.FakeItEasy.Tests.Fixture;
 
 public class TargetWithoutDependenciesTests
 {

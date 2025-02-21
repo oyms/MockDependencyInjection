@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.NSubstitute.Tests", "tests\Skaar.MockDependencyInjection.NSubstitute.Tests\Skaar.MockDependencyInjection.NSubstitute.Tests.csproj", "{A775F14F-9263-422D-A175-DD8572621AF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.FakeItEasy", "src\Skaar.MockDependencyInjection.FakeItEasy\Skaar.MockDependencyInjection.FakeItEasy.csproj", "{ECEB5436-DF25-4692-A456-C21445FF0863}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.FakeItEasy.Tests", "Skaar.MockDependencyInjection.FakeItEasy.Tests\Skaar.MockDependencyInjection.FakeItEasy.Tests.csproj", "{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,9 +54,18 @@ Global
 		{A775F14F-9263-422D-A175-DD8572621AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A775F14F-9263-422D-A175-DD8572621AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A775F14F-9263-422D-A175-DD8572621AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECEB5436-DF25-4692-A456-C21445FF0863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECEB5436-DF25-4692-A456-C21445FF0863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECEB5436-DF25-4692-A456-C21445FF0863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECEB5436-DF25-4692-A456-C21445FF0863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{56556368-8895-4D3C-A624-296C042CEC73} = {1764922F-B80C-4812-8780-FBDD35FD8EB6}
 		{A775F14F-9263-422D-A175-DD8572621AF1} = {1764922F-B80C-4812-8780-FBDD35FD8EB6}
+		{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7} = {1764922F-B80C-4812-8780-FBDD35FD8EB6}
 	EndGlobalSection
 EndGlobal

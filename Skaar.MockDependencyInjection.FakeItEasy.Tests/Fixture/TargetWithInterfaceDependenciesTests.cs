@@ -1,6 +1,6 @@
 using Shouldly;
 
-namespace Skaar.MockDependencyInjection.NSubstitute.Tests.Fixture;
+namespace Skaar.MockDependencyInjection.FakeItEasy.Tests.Fixture;
 
 public class TargetWithInterfaceDependenciesTests
 {
@@ -18,7 +18,10 @@ public class TargetWithInterfaceDependenciesTests
     {
         var fixture = IoC.CreateFixture<TestTarget>();
         var dep0 = fixture.Arg<IDependency0>();
-        var dep1 = fixture.Arg<IDependency1>();
+        var dep1 = fixture.Arg<IDependency1>(optionsBuilder: opt =>
+        {
+            opt.Named("Some name");
+        });
             
         var result = fixture.Resolve();
 

@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>MockDependencyInjection.Moq</PackageId>
-        <Description>The package for injectiong Moq-mocks into constructors.</Description>
+        <Description>The package for injecting Moq-mocks into constructors.</Description>
     </PropertyGroup>
 
     <ItemGroup>
