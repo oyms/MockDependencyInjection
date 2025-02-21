@@ -47,9 +47,17 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
 
     protected abstract IArgumentResolver  CreateArgumentResolver(ParameterInfo parameter);
 
-    protected virtual ConstructorInfo SelectConstructor(IEnumerable<ConstructorInfo> constructors)
+    protected virtual ConstructorInfo SelectConstructor(IReadOnlyCollection<ConstructorInfo> constructors)
     {
-        return constructors.OrderByDescending(c => c.GetParameters().Length).First();
+        if(!constructors.Any()) throw new ArgumentException("No constructors found", nameof(constructors));
+        if(constructors.Count == 1) return constructors.First();
+        return constructors
+            .Where(c => c.GetParameters().Any())
+            .OrderByDescending(c => c
+            .GetParameters()
+            .Select(p => Resolvers.TryResolve(new ResolverSpecification(p), out var resolved ) ? resolved : null)
+            .Count(r => r != null))
+            .First();
     }
 
     protected virtual void AssessFeasibility()
@@ -83,7 +91,7 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     {
         var allSetups = Resolvers.Keys.ToList();
         var parameters = constructor.GetParameters();
-        var resolvers = parameters.Select(GetArgumentResolver).ToList();
+        var resolvers = parameters.Select(GetOrCreateArgumentResolver).ToList();
         var notUsed = allSetups.Except(resolvers.Select(r => r.Key)).ToArray();
         if (notUsed.Any())
         {
@@ -92,7 +100,7 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
         return resolvers.Select(r => r.Resolve()).ToArray();
     }
 
-    private IArgumentResolver GetArgumentResolver(ParameterInfo parameter)
+    private IArgumentResolver GetOrCreateArgumentResolver(ParameterInfo parameter)
     {
         var key = new ResolverSpecification(parameter);
         if(Resolvers.TryResolve(key, out var resolver))
