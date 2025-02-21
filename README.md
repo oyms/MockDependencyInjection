@@ -4,7 +4,7 @@ Mock dependency injection tool
 The purpose of this tool is to create test targets in unit tests, 
 in projects where constructor injections of dependencies are used.
 
-It tries to remove the need for using `new` directly, letting the
+It seeks to remove the need for using `new` directly, letting the
 tool create the neccessary mocks needed to create an instance of the test target.
 
 
@@ -18,14 +18,13 @@ tool create the neccessary mocks needed to create an instance of the test target
     - [x] For nearest fit to a parameter
     - [x] For classes with constructors (recursive)
 - [x] A NSubstitute implementation
-- [ ] A RhinoMock implementation
 - [x] A FakeItEasy implementation
 - [x] Include a service provider/DI container
 - [x] Verify that all setups are a part of the constructor
 - [x] Select the best matching constructor
 - [x] Solution for typed logger
 - [ ] Documentation
-  - [ ] Code
+  - [x] Code
   - [ ] Readme
 - [ ] Packaging
   - [x] Icon

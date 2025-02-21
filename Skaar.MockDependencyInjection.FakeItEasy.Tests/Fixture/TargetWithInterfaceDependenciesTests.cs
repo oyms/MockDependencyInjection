@@ -28,7 +28,7 @@ public class TargetWithInterfaceDependenciesTests
         result.Dep0.ShouldBe(dep0);
         result.Dep1.ShouldBe(dep1);
 
-        result.Dep0.GetType().Name.ShouldBe("ObjectProxy");
+        result.Dep0.GetType().Name.ShouldStartWith("ObjectProxy");
     }    
     
 

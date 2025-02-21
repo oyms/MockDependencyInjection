@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Skaar.MockDependencyInjection.Resolving;
 
-public class MicrosoftLoggerResolver(Action<string> sink) : ServiceContainer
+class MicrosoftLoggerResolver(Action<string> sink) : ServiceContainer
 {
     public override bool TryResolve(Type type, [NotNullWhen(true)] out object? instance)
     {
