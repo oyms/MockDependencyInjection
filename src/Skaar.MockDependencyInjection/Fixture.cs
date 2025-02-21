@@ -1,7 +1,6 @@
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
 using Skaar.MockDependencyInjection.Resolving;
-using System.ComponentModel.Design;
 using System.Reflection;
 using ServiceContainer = Skaar.MockDependencyInjection.Resolving.ServiceContainer;
 

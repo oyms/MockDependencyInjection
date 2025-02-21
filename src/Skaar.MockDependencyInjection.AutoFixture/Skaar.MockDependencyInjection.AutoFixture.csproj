@@ -5,6 +5,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>MockDependencyInjection.AutoFixture</PackageId>
+        <Description>Provides an AutoFixture service provider to the MockDependencyInjection package.</Description>
     </PropertyGroup>
 
     <ItemGroup>

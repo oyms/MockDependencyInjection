@@ -24,10 +24,9 @@ tool create the neccessary mocks needed to create an instance of the test target
 - [x] Verify that all setups are a part of the constructor
 - [x] Select the best matching constructor
 - [x] Solution for typed logger
-- [ ] Configuration
 - [ ] Documentation
   - [ ] Code
   - [ ] Readme
 - [ ] Packaging
-  - [ ] Icon
+  - [x] Icon
   - [ ] Publish script

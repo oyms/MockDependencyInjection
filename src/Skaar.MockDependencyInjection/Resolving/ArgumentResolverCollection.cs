@@ -1,5 +1,6 @@
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skaar.MockDependencyInjection.Resolving;
 
@@ -9,7 +10,7 @@ class ArgumentResolverCollection : IArgumentResolverCollection
 
     public IArgumentResolver? this[ResolverSpecification key] => _resolvers.GetValueOrDefault(key);
 
-    public bool TryResolve(ResolverSpecification key, out IArgumentResolver? resolver)
+    public bool TryResolve(ResolverSpecification key, [NotNullWhen(true)] out IArgumentResolver? resolver)
     {
         //Find exact match
         if(key.ParameterName is not null)

@@ -12,14 +12,14 @@
         <RepositoryUrl>https://github.com/oyms</RepositoryUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageIcon>logo_600px.png</PackageIcon>
+        <PackageIcon>logo.png</PackageIcon>
         <PackageReleaseNotes>
             1.0.0: Initial.
         </PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="..\..\..\resources\udir_logo_600px.png" Pack="true" PackagePath="" />
+        <None Include="..\..\resources\logo.png" Pack="true" PackagePath="" />
         <None Include="..\..\README.md" Pack="true" PackagePath="/" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     </ItemGroup>
