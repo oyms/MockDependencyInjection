@@ -11,7 +11,7 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
 {
     private T? _resolved;
     private readonly Type _targetType = typeof(T);
-    private ServiceContainerCollection _serviceContainers = new();
+    private readonly ServiceContainerCollection _serviceContainers = new();
 
     public TI Arg<TI>(TI instance, string? parameterName = null) where TI : notnull
     {
@@ -24,6 +24,12 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     public TFixture Use(ServiceContainer serviceContainer)
     {
         _serviceContainers.Add(serviceContainer);
+        return (TFixture) this;
+    }
+
+    public TFixture UseLogSink(Action<string>? sink = null)
+    {
+        _serviceContainers.Add(new MicrosoftLoggerResolver(sink ?? Console.Out.WriteLine));
         return (TFixture) this;
     }
 

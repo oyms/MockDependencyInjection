@@ -23,7 +23,7 @@ tool create the neccessary mocks needed to create an instance of the test target
 - [x] Include a service provider/DI container
 - [x] Verify that all setups are a part of the constructor
 - [x] Select the best matching constructor
-- [ ] Solution for typed logger
+- [x] Solution for typed logger
 - [ ] Configuration
 - [ ] Documentation
   - [ ] Code
