@@ -1,4 +1,5 @@
 using Shouldly;
+using Skaar.MockDependencyInjection.NSubstitute;
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 

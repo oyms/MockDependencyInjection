@@ -14,6 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.AutoFixture", "src\Skaar.MockDependencyInjection.AutoFixture\Skaar.MockDependencyInjection.AutoFixture.csproj", "{5FE90A6F-9CEA-4C72-AAED-9F361C7E559A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1764922F-B80C-4812-8780-FBDD35FD8EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.NSubstitute", "src\Skaar.MockDependencyInjection.NSubstitute\Skaar.MockDependencyInjection.NSubstitute.csproj", "{7AE06349-07FB-47E6-9A1D-8352284293DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.NSubstitute.Tests", "tests\Skaar.MockDependencyInjection.NSubstitute.Tests\Skaar.MockDependencyInjection.NSubstitute.Tests.csproj", "{A775F14F-9263-422D-A175-DD8572621AF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +42,17 @@ Global
 		{5FE90A6F-9CEA-4C72-AAED-9F361C7E559A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE90A6F-9CEA-4C72-AAED-9F361C7E559A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE90A6F-9CEA-4C72-AAED-9F361C7E559A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE06349-07FB-47E6-9A1D-8352284293DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE06349-07FB-47E6-9A1D-8352284293DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE06349-07FB-47E6-9A1D-8352284293DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE06349-07FB-47E6-9A1D-8352284293DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A775F14F-9263-422D-A175-DD8572621AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A775F14F-9263-422D-A175-DD8572621AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A775F14F-9263-422D-A175-DD8572621AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A775F14F-9263-422D-A175-DD8572621AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56556368-8895-4D3C-A624-296C042CEC73} = {1764922F-B80C-4812-8780-FBDD35FD8EB6}
+		{A775F14F-9263-422D-A175-DD8572621AF1} = {1764922F-B80C-4812-8780-FBDD35FD8EB6}
 	EndGlobalSection
 EndGlobal
