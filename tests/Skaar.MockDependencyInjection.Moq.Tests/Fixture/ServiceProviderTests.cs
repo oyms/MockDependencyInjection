@@ -1,6 +1,7 @@
 using Shouldly;
 using Skaar.MockDependencyInjection.Extensions;
 using System.ComponentModel.Design;
+// ReSharper disable NotAccessedPositionalProperty.Local
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 
@@ -39,6 +40,8 @@ public class ServiceProviderTests
     public interface IDependency;
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
+// ReSharper disable ClassNeverInstantiated.Local
 file class TestTarget(ServiceProviderTests.IDependency dep)
 {
     public ServiceProviderTests.IDependency Dep { get; } = dep;

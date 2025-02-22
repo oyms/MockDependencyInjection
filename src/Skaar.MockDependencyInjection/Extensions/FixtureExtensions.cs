@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Testing;
 using Skaar.MockDependencyInjection.Resolving;
 using System.ComponentModel.Design;
 
@@ -16,5 +18,25 @@ public static class FixtureExtensions
     {
         fixture.Use(new ServiceProviderWrapper(serviceContainer));
         return (TFixture) fixture;
+    }
+
+    /// <summary>
+    /// When the target has dependency on <see cref="ILogger{TCategoryName}"/>
+    /// or <see cref="ILogger{TCategoryName}"/>, this method can be used to inject
+    /// a fake logger <seealso cref="FakeLogger"/> to direct the log output.
+    /// </summary>
+    /// <param name="fixture">The fixture to add this to.</param>
+    /// <param name="sink">
+    /// The output to write the log messages to.
+    /// Defaults to <see cref="Console"/>.
+    /// </param>
+    /// <returns>This fixture</returns>
+    /// <remarks>
+    /// When using xUnit, use <c>ITestOutputHelper.WriteLine</c> as <paramref name="sink"/>,
+    /// to get the log output in the test results.
+    /// </remarks>
+    public static TFixture UseLogSink<T, TFixture>(this Fixture<T, TFixture> fixture, Action<string>? sink = null) where T : class where TFixture : Fixture<T, TFixture>
+    {
+        return fixture.Use(new MicrosoftLoggerResolver(sink ?? Console.Out.WriteLine));
     }
 }

@@ -25,6 +25,8 @@ public class ArgumentAsFixtureTests
     };
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
+// ReSharper disable ClassNeverInstantiated.Local
 file class TestTarget(ArgumentAsFixtureTests.IDependency0 first, ArgumentAsFixtureTests.IDependency1 second, OtherClass other)
 {
     public OtherClass Other { get; } = other;

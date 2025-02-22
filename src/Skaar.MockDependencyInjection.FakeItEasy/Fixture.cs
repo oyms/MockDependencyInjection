@@ -11,7 +11,7 @@ namespace Skaar.MockDependencyInjection.FakeItEasy;
 /// to <see cref="global::FakeItEasy"/> fakes.
 /// </summary>
 /// <typeparam name="T">The test target</typeparam>
-public class Fixture<T> : Skaar.MockDependencyInjection.Fixture<T, Fixture<T>> where T : class
+public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
 {
     /// <inheritdoc cref="Fixture{T,TFixture}"/>
     /// <summary>
@@ -53,6 +53,6 @@ public class Fixture<T> : Skaar.MockDependencyInjection.Fixture<T, Fixture<T>> w
     
     protected override IArgumentResolver CreateArgumentResolver(ParameterInfo parameter)
     {
-        return new FakeItEasyArgumentResolver(new ResolverSpecification(parameter), null);
+        return new FakeItEasyArgumentResolver(new ResolverSpecification(parameter));
     }
 }

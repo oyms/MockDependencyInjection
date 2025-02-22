@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Testing;
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Exceptions;
 using Skaar.MockDependencyInjection.Resolving;
@@ -52,26 +50,6 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     }
 
     /// <summary>
-    /// When the target has dependency on <see cref="ILogger"/>
-    /// or <see cref="ILogger{TCategoryName}"/>, this method can be used to inject
-    /// a fake logger <seealso cref="FakeLogger"/> to direct the log output.
-    /// </summary>
-    /// <param name="sink">
-    /// The output to write the log messages to.
-    /// Defaults to <see cref="Console"/>.
-    /// </param>
-    /// <returns>This fixture</returns>
-    /// <remarks>
-    /// When using xUnit, use <c>ITestOutputHelper.WriteLine</c> as <paramref name="sink"/>,
-    /// to get the log output in the test results.
-    /// </remarks>
-    public TFixture UseLogSink(Action<string>? sink = null)
-    {
-        _serviceContainers.Add(new MicrosoftLoggerResolver(sink ?? Console.Out.WriteLine));
-        return (TFixture) this;
-    }
-
-    /// <summary>
     /// Resolves the test target instance.
     /// </summary>
     /// <returns>
@@ -88,6 +66,9 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     /// </remarks>
     public T Resolve() => _resolved ??= CreateInstance();
 
+    /// <inheritdoc cref="IResolvable"/>
+    object IResolvable.Resolve() => Resolve();
+
     protected virtual T CreateInstance()
     {
         AssessFeasibility();
@@ -97,11 +78,8 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
 
         var args = GetConstructorArguments(constructor);
             
-        return (T) constructor.Invoke(args)!;
+        return (T) constructor.Invoke(args);
     }
-
-    /// <inheritdoc cref="IResolvable"/>
-    object IResolvable.Resolve() => Resolve();
 
     protected IArgumentResolverCollection Resolvers { get; } = new ArgumentResolverCollection();
 

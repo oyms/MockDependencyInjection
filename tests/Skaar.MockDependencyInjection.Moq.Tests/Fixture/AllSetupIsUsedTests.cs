@@ -1,5 +1,6 @@
 using Shouldly;
 using Skaar.MockDependencyInjection.Exceptions;
+// ReSharper disable UnusedVariable
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 
@@ -24,6 +25,7 @@ public class AllSetupIsUsedTests
 }
 
 file class TestTarget(
+#pragma warning disable CS9113 // Parameter is unread.
     AllSetupIsUsedTests.I0 first,
     AllSetupIsUsedTests.I1 second,
     AllSetupIsUsedTests.I2 third

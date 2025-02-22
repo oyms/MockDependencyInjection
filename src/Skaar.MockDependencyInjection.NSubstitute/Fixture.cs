@@ -10,7 +10,7 @@ namespace Skaar.MockDependencyInjection.NSubstitute;
 /// to <see cref="global::NSubstitute"/> substitutes.
 /// </summary>
 /// <typeparam name="T">The test target</typeparam>
-public class Fixture<T> : Skaar.MockDependencyInjection.Fixture<T, Fixture<T>> where T : class
+public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
 {
     /// <inheritdoc cref="Fixture{T,TFixture}"/>
     /// <summary>

@@ -11,7 +11,7 @@ namespace Skaar.MockDependencyInjection.Moq;
 /// to <see cref="global::Moq"/> mock.
 /// </summary>
 /// <typeparam name="T">The test target</typeparam>
-public class Fixture<T> : Skaar.MockDependencyInjection.Fixture<T, Fixture<T>> where T : class
+public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
 {
     public Mock<TA> Arg<TA>(
         string? parameterName = null, 

@@ -28,5 +28,5 @@ file class TestTarget(InstanceSetupTests.IDependency dep)
 
 file class Implementation : InstanceSetupTests.IDependency
 {
-    public string Text { get; set; }
+    public required string Text { get; set; }
 }

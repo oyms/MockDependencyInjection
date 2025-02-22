@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Moq;
+using Skaar.MockDependencyInjection.Extensions;
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 

@@ -1,6 +1,7 @@
 using AutoFixture;
 using Shouldly;
 using Skaar.MockDependencyInjection.AutoFixture;
+// ReSharper disable UnusedMember.Local
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 
@@ -33,6 +34,8 @@ public class AutoFixtureProviderTests
     }
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
+// ReSharper disable ClassNeverInstantiated.Local
 file class TestTarget(
     AutoFixtureProviderTests.IDependency first,
     string second,

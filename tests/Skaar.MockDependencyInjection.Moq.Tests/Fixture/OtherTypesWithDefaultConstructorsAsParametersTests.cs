@@ -1,5 +1,6 @@
 using Shouldly;
 using Skaar.MockDependencyInjection.Resolving;
+// ReSharper disable UnusedMember.Local
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 
@@ -20,6 +21,8 @@ public class OtherTypesWithDefaultConstructorsAsParametersTests
     public abstract class AbstractClassWithDefaultConstructor;
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
+// ReSharper disable ClassNeverInstantiated.Local
 file class TestTarget(
     OtherTypesWithDefaultConstructorsAsParametersTests.RecordWithDefaultConstructor  first,
     OtherTypesWithDefaultConstructorsAsParametersTests.StructWithDefaultConstructor second,

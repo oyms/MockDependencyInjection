@@ -1,4 +1,6 @@
 using Shouldly;
+// ReSharper disable UnusedMember.Local
+// ReSharper disable UnusedParameter.Local
 
 namespace Skaar.MockDependencyInjection.Moq.Tests.Fixture;
 
@@ -40,6 +42,8 @@ public class ConstructorSelectionTests
     public interface IDependency2;
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
+// ReSharper disable ClassNeverInstantiated.Local
 file class TestTarget
 {
     public TestTarget()

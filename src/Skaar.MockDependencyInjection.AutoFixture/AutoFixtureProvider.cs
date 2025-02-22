@@ -1,5 +1,4 @@
-﻿using AutoFixture;
-using AutoFixture.Kernel;
+﻿using AutoFixture.Kernel;
 using Skaar.MockDependencyInjection.Resolving;
 using System.Diagnostics.CodeAnalysis;
 
@@ -16,7 +15,7 @@ namespace Skaar.MockDependencyInjection.AutoFixture;
 /// <remarks>
 /// Use <see cref="Fixture"/> to customize the instance creation.
 /// </remarks>
-public class AutoFixtureProvider : Resolving.ServiceContainer
+public class AutoFixtureProvider : ServiceContainer
 {
     /// <summary>
     /// The fixture used to create instances.

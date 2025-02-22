@@ -18,7 +18,7 @@ class FakeItEasyArgumentResolver(ResolverSpecification key, object? optionsBuild
     {
         if (optionsBuilder == null)
         {
-            var method = typeof(A).GetMethod("Fake", []);
+            var method = typeof(A).GetMethod("Fake", [])!;
             var genericMethod = method.MakeGenericMethod(Key.ArgumentType);
             return genericMethod.Invoke(null, [])!;
         }

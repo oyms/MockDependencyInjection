@@ -37,7 +37,7 @@ public class TargetWithInterfaceDependenciesTests
             callBase: false,
             defaultValueProvider: DefaultValueProvider.Empty);
             
-        var result = fixture.Resolve();
+        _ = fixture.Resolve();
 
         dep0.Behavior.ShouldBe(MockBehavior.Loose);
         dep0.CallBase.ShouldBe(true);
