@@ -7,7 +7,8 @@ in projects where constructor injections of dependencies are used.
 It seeks to remove the need for using `new` directly, letting the
 tool create the neccessary mocks needed to create an instance of the test target.
 
-This works best when mostly interfaces are used to represent dependencies.
+> [!TIP]
+> This works best when mostly interfaces are used to represent dependencies.
 
 ![Mock depencendy injection tool](./resources/logo.png)
 
@@ -266,7 +267,7 @@ For NUnit tests, use `TestContext.Write`.
 
 #### Use AutoFixture to create dependencies
 
-[AutoFixture] is a library that can create instances of concrete types and populate
+[AutoFixture](https://autofixture.github.io/) is a library that can create instances of concrete types and populate
 properties with values (recursively).
 
 This may be used to fill in the dependencies not specified using the `Arg<T>` method.
@@ -307,3 +308,4 @@ is exposed in the `Fixture` property, when specific setup is required.
 - [ ] Packaging
   - [ ] Icon
   - [ ] Publish script
+  - [ ] Readme in each package. Link to main readme.
