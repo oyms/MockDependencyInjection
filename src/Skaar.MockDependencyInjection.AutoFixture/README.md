@@ -4,7 +4,7 @@ Mock dependency injection tool using AutoFixture
 The purpose of this tool is to create test targets in unit tests, 
 in projects where constructor injections of dependencies are used.
 
-This package is used with `skaar.mockdependencyinjection`.
+This package is used with `MockDependencyInjection.Base`.
 
 ## Usage 
 

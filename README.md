@@ -17,11 +17,11 @@ tool create the neccessary mocks needed to create an instance of the test target
 ### Installation
 [Add the nuget dependency to your test project](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-package):
 
-| *Mocking library*                             | *Nuget reference*                   | namespace                                          |
-|-----------------------------------------------|-------------------------------------|----------------------------------------------------|
-| [Moq](https://github.com/devlooped/moq)       | `skaar.mockdependency.moq`          | `using Skaar.MockDependencyInjection.Moq;`         |
-| [NSubstitute](https://nsubstitute.github.io/) | `skaar.mockdependency.nsubstituteq` | `using Skaar.MockDependencyInjection.NSubstitute;` |
-| [FakeItEasy](https://fakeiteasy.github.io/)   | `skaar.mockdependency.fakeiteasy`   | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
+| *Mocking library*                             | *Nuget reference*                      | namespace                                          |
+|-----------------------------------------------|----------------------------------------|----------------------------------------------------|
+| [Moq](https://github.com/devlooped/moq)       | `MockDependencyInjection.Moq`          | `using Skaar.MockDependencyInjection.Moq;`         |
+| [NSubstitute](https://nsubstitute.github.io/) | `MockDependencyInjection.NSubstituteq` | `using Skaar.MockDependencyInjection.NSubstitute;` |
+| [FakeItEasy](https://fakeiteasy.github.io/)   | `MockDependencyInjection.FakeItEasy`    | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
 
 ### Use fixture
 
