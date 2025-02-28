@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		CommonProps = src/CommonProps.targets
+		resources\logo.png = resources\logo.png
+		.github\workflows\nuget-publish.yml = .github\workflows\nuget-publish.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.AutoFixture", "src\Skaar.MockDependencyInjection.AutoFixture\Skaar.MockDependencyInjection.AutoFixture.csproj", "{5FE90A6F-9CEA-4C72-AAED-9F361C7E559A}"
