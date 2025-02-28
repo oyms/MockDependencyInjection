@@ -5,7 +5,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>MockDependencyInjection.NSubstitute</PackageId>
+        <PackageId>MockDependencyInjection.FakeItEasy</PackageId>
         <Description>The package for injectiong FakeItEasy-mocks into constructors.</Description>
     </PropertyGroup>
 
