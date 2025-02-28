@@ -284,28 +284,3 @@ The [AutoFixture fixture](https://github.com/AutoFixture/AutoFixture/blob/master
 is exposed in the `Fixture` property, when specific setup is required.
 
 [Example](tests/Skaar.MockDependencyInjection.Moq.Tests/Fixture/AutoFixtureProviderTests.cs)
-
----
-
-## TODO
-- [x] Create the base classes and contracts
-- [x] A basic Moq implementation
-  - [x] Define parameters/arguments
-    - [x] For interfaces
-      - [x] Defining mock behaviour (as an overload) 
-    - [x] For concrete instances
-    - [x] For nearest fit to a parameter
-    - [x] For classes with constructors (recursive)
-- [x] A NSubstitute implementation
-- [x] A FakeItEasy implementation
-- [x] Include a service provider/DI container
-- [x] Verify that all setups are a part of the constructor
-- [x] Select the best matching constructor
-- [x] Solution for typed logger
-- [ ] Documentation
-  - [x] Code
-  - [x] Readme
-- [ ] Packaging
-  - [ ] Icon
-  - [ ] Publish script
-  - [ ] Readme in each package. Link to main readme.
