@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>MockDependencyInjection.FakeItEasy</PackageId>
-        <Description>The package for injectiong FakeItEasy-mocks into constructors.</Description>
+        <Description>Automatically injects FakeItEasy fakes into constructors when testing classes used in dependency injection.</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,6 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="FakeItEasy" Version="8.3.0" />
+        <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     </ItemGroup>
 
 </Project>

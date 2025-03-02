@@ -17,11 +17,13 @@ tool create the neccessary mocks needed to create an instance of the test target
 ### Installation
 [Add the nuget dependency to your test project](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-package):
 
-| *Mocking library*                             | *Nuget reference*                      | namespace                                          |
-|-----------------------------------------------|----------------------------------------|----------------------------------------------------|
-| [Moq](https://github.com/devlooped/moq)       | `MockDependencyInjection.Moq`          | `using Skaar.MockDependencyInjection.Moq;`         |
-| [NSubstitute](https://nsubstitute.github.io/) | `MockDependencyInjection.NSubstituteq` | `using Skaar.MockDependencyInjection.NSubstitute;` |
-| [FakeItEasy](https://fakeiteasy.github.io/)   | `MockDependencyInjection.FakeItEasy`    | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
+| *Mocking library*                             | *Nuget reference*                                                                                           | namespace                                          |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [Moq](https://github.com/devlooped/moq)       | [`MockDependencyInjection.Moq`](https://www.nuget.org/packages/MockDependencyInjection.Moq)                 | `using Skaar.MockDependencyInjection.Moq;`         |
+| [NSubstitute](https://nsubstitute.github.io/) | [`MockDependencyInjection.NSubstitute`](https://www.nuget.org/packages/MockDependencyInjection.NSubstitute) | `using Skaar.MockDependencyInjection.NSubstitute;` |
+| [FakeItEasy](https://fakeiteasy.github.io/)   | [`MockDependencyInjection.FakeItEasy`](https://www.nuget.org/packages/MockDependencyInjection.FakeItEasy)                                                                    | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
+
+![Flow](./resources/Flow.svg)
 
 ### Use fixture
 

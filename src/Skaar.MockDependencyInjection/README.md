@@ -6,11 +6,11 @@ in projects where constructor injections of dependencies are used.
 
 This package is used by other packages.
 
-| *Mocking library*                             | *Nuget reference*                      | namespace                                          |
-|-----------------------------------------------|----------------------------------------|----------------------------------------------------|
-| [Moq](https://github.com/devlooped/moq)       | `MockDependencyInjection.Moq`          | `using Skaar.MockDependencyInjection.Moq;`         |
-| [NSubstitute](https://nsubstitute.github.io/) | `MockDependencyInjection.NSubstituteq` | `using Skaar.MockDependencyInjection.NSubstitute;` |
-| [FakeItEasy](https://fakeiteasy.github.io/)   | `MockDependencyInjection.FakeItEasy`    | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
+| *Mocking library*                             | *Nuget reference*                                                                                           | namespace                                          |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [Moq](https://github.com/devlooped/moq)       | [`MockDependencyInjection.Moq`](https://www.nuget.org/packages/MockDependencyInjection.Moq)                 | `using Skaar.MockDependencyInjection.Moq;`         |
+| [NSubstitute](https://nsubstitute.github.io/) | [`MockDependencyInjection.NSubstitute`](https://www.nuget.org/packages/MockDependencyInjection.NSubstitute) | `using Skaar.MockDependencyInjection.NSubstitute;` |
+| [FakeItEasy](https://fakeiteasy.github.io/)   | [`MockDependencyInjection.FakeItEasy`](https://www.nuget.org/packages/MockDependencyInjection.FakeItEasy)                                                                    | `using Skaar.MockDependencyInjection.FakeItEasy;`  |
 
 ---
 

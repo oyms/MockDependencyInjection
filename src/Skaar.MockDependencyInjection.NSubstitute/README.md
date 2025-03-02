@@ -4,7 +4,7 @@ Mock dependency injection tool using NSubstitute
 The purpose of this tool is to create test targets in unit tests,
 in projects where constructor injections of dependencies are used.
 
-This package is used with `MockDependencyInjection.Base`.
+This package is used with [`MockDependencyInjection.Base`](https://www.nuget.org/packages/MockDependencyInjection.Base).
 
 ## Usage
 
