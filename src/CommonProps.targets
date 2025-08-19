@@ -3,7 +3,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);CS1591;CA1822</NoWarn>
         <AssemblyVersion>$(Version)</AssemblyVersion>
-        <VersionPrefix>1.0.4</VersionPrefix>
+        <VersionPrefix>1.0.5</VersionPrefix>
         <Product>Mock dependency injection tool</Product>
         <Authors>Skaar</Authors>
         <PackageTags>Mock;UnitTesting</PackageTags>
@@ -19,6 +19,7 @@
             1.0.2: Downgrade to dotnet 8
             1.0.3: Update dependencies. Documentation.
             1.0.4: Update repository url.
+            1.0.5: Bug fix: Moq default configuration was not applied to the mock.
         </PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <IsPackable>true</IsPackable>
