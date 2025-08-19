@@ -66,6 +66,12 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     /// </remarks>
     public T Resolve() => _resolved ??= CreateInstance();
 
+    /// <summary>
+    /// This event is raised when the target is resolved.
+    /// Use this to manipulate the target after it has been created.
+    /// </summary>
+    public event EventHandler<T> OnResolved = (sender, e) => { };
+
     /// <inheritdoc cref="IResolvable"/>
     object IResolvable.Resolve() => Resolve();
 
@@ -77,8 +83,12 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
         var constructor = SelectConstructor(constructors);
 
         var args = GetConstructorArguments(constructor);
-            
-        return (T) constructor.Invoke(args);
+
+        var invoked = (T) constructor.Invoke(args);
+        
+        OnResolved(this, invoked);
+        
+        return invoked;
     }
 
     protected IArgumentResolverCollection Resolvers { get; } = new ArgumentResolverCollection();
