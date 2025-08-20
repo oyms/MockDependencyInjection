@@ -77,18 +77,29 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
 
     protected virtual T CreateInstance()
     {
-        AssessFeasibility();
-            
-        var constructors = _targetType.GetConstructors(BindingFlags.Public|BindingFlags.Instance);
-        var constructor = SelectConstructor(constructors);
-
-        var args = GetConstructorArguments(constructor);
+        var args = SelectConstructorAndGetArguments(out var constructor);
 
         var invoked = (T) constructor.Invoke(args);
         
-        OnResolved(this, invoked);
+        IsResolved(invoked);
         
         return invoked;
+    }
+
+    protected void IsResolved(T instance)
+    {
+        _resolved = instance;
+        OnResolved(this, instance);
+    }
+
+    protected object[] SelectConstructorAndGetArguments(out ConstructorInfo constructor)
+    {
+        AssessFeasibility();
+            
+        var constructors = _targetType.GetConstructors(BindingFlags.Public|BindingFlags.Instance);
+        constructor = SelectConstructor(constructors);
+
+        return GetConstructorArguments(constructor);
     }
 
     protected IArgumentResolverCollection Resolvers { get; } = new ArgumentResolverCollection();

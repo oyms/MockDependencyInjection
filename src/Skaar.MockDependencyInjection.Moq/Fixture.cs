@@ -50,6 +50,22 @@ public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
         return fixture;
     }
 
+    /// <summary>
+    /// Resolves the test target as a <see cref="Mock{T}"/>.
+    /// Moq must be able to create a proxy class from <typeparamref name="T"/>.
+    /// </summary>
+    public Mock<T> ResolveAsMock(
+        MockBehavior behavior = MockBehavior.Loose, 
+        DefaultValue defaultValue = DefaultValue.Mock, 
+        bool callBase = true)
+    {
+        AssertNotResolved();
+        var args = SelectConstructorAndGetArguments(out var _);
+        var mock = new Mock<T>(behavior, args){ DefaultValue = defaultValue, CallBase = callBase };
+        IsResolved(mock.Object);
+        return mock;
+    }
+
     protected override IArgumentResolver CreateArgumentResolver(ParameterInfo parameter)
     {
         var key = new ResolverSpecification(parameter);
