@@ -1,3 +1,4 @@
+using NSubstitute;
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Resolving;
 using System.Reflection;
@@ -49,6 +50,19 @@ public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
         var resolver = new ResolvableResolver(ResolverSpecification.New<TA>(parameterName), fixture);
         Resolvers.Add(resolver);
         return fixture;
+    }
+
+    /// <summary>
+    /// Resolves the test target as a substitute, on which virtual members may be set up and verified. 
+    /// Moq must be able to create a proxy class from <typeparamref name="T"/>.
+    /// </summary>
+    public T ResolveAsSubstitute()
+    {
+        AssertNotResolved();
+        var args = SelectConstructorAndGetArguments(out var _);
+        var result = Substitute.For<T>(args);
+        IsResolved(result);
+        return result;
     }
 
     protected override IArgumentResolver CreateArgumentResolver(ParameterInfo parameter)
