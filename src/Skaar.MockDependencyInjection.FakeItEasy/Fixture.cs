@@ -50,6 +50,19 @@ public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
         Resolvers.Add(resolver);
         return fixture;
     }
+
+    /// <summary>
+    /// Resolves the test target as a fake object, where virtual methods can be set up and verified.
+    /// FakeItEasy must be able to create a proxy class from <typeparamref name="T"/>.
+    /// </summary>
+    public T ResolveAsFake()
+    {
+        AssertNotResolved();
+        var args = SelectConstructorAndGetArguments(out var _);
+        var fake = FakeItEasyCreator.CreateFake<T>(opt => opt.WithArgumentsForConstructor(args));
+        IsResolved(fake);
+        return fake;
+    }
     
     protected override IArgumentResolver CreateArgumentResolver(ParameterInfo parameter)
     {

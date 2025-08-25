@@ -13,6 +13,15 @@ namespace Skaar.MockDependencyInjection.Moq;
 /// <typeparam name="T">The test target</typeparam>
 public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
 {
+    /// <summary>
+    /// Creates a new <see cref="global::Moq.Mock"/> for a constructor parameter of type <typeparamref name="TA"/>.
+    /// </summary>
+    /// <param name="parameterName">An optional parameter name. This is useful when several constructor parameters have the same type.</param>
+    /// <param name="behavior">The mock behavior (strict or loose)</param>
+    /// <param name="callBase">When false, the inner methods of the mock will not be called. Not applicable to interfaces. (<see cref="global::Moq.Mock.CallBase"/>)</param>
+    /// <param name="defaultValueProvider">Should the mock generate new mocks from its methods?</param>
+    /// <typeparam name="TA">The parameter type</typeparam>
+    /// <returns>Returns a <see cref="global::Moq.Mock"/> of <typeparamref name="TA"/>.</returns>
     public Mock<TA> Arg<TA>(
         string? parameterName = null, 
         MockBehavior behavior = MockBehavior.Loose,
