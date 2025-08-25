@@ -3,7 +3,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);CS1591;CA1822</NoWarn>
         <AssemblyVersion>$(Version)</AssemblyVersion>
-        <VersionPrefix>1.3.0</VersionPrefix>
+        <VersionPrefix>1.4.0</VersionPrefix>
         <Product>Mock dependency injection tool</Product>
         <Authors>Skaar</Authors>
         <PackageTags>Mock;UnitTesting</PackageTags>
@@ -24,6 +24,7 @@
             1.1.0: Add OnResolved event
             1.2.0: Resolve as Moq.Mock instead of T
             1.3.0: Add Service Provider
+            1.4.0: Implement latest features in all libraries
         </PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <IsPackable>true</IsPackable>

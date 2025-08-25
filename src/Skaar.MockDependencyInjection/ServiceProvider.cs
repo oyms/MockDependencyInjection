@@ -29,7 +29,7 @@ public abstract class ServiceProvider<T> : IServiceProvider where T:ServiceProvi
         Resolvers.Add(resolver);
     }
 
-    public T AddService<TS>(TS instance)
+    public T AddService<TS>(TS instance) where TS : notnull
     {
         var resolver = InstanceArgumentResolver.From(instance);
         Resolvers.Add(resolver);
@@ -37,7 +37,7 @@ public abstract class ServiceProvider<T> : IServiceProvider where T:ServiceProvi
     }
 
     /// <inheritdoc cref="IServiceProvider.GetService"/>
-    object? IServiceProvider.GetService(Type serviceType)
+    object IServiceProvider.GetService(Type serviceType)
     {
         if (Resolvers.TryResolve(new ResolverSpecification(serviceType, null), out var resolver))
         {

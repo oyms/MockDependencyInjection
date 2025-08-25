@@ -70,7 +70,7 @@ public abstract class Fixture<T, TFixture>: IResolvable where T : class where TF
     /// This event is raised when the target is resolved.
     /// Use this to manipulate the target after it has been created.
     /// </summary>
-    public event EventHandler<T> OnResolved = (sender, e) => { };
+    public event EventHandler<T> OnResolved = (_, _) => { };
 
     /// <inheritdoc cref="IResolvable"/>
     object IResolvable.Resolve() => Resolve();

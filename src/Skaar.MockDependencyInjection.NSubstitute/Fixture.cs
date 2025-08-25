@@ -59,7 +59,7 @@ public class Fixture<T> : Fixture<T, Fixture<T>> where T : class
     public T ResolveAsSubstitute()
     {
         AssertNotResolved();
-        var args = SelectConstructorAndGetArguments(out var _);
+        var args = SelectConstructorAndGetArguments(out _);
         var result = Substitute.For<T>(args);
         IsResolved(result);
         return result;

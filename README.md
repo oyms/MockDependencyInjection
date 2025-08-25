@@ -295,3 +295,21 @@ The [AutoFixture fixture](https://github.com/AutoFixture/AutoFixture/blob/master
 is exposed in the `Fixture` property, when specific setup is required.
 
 [Example](tests/Skaar.MockDependencyInjection.Moq.Tests/Fixture/AutoFixtureProviderTests.cs)
+
+### Service container
+
+A service container can be used as a service locator, for instance when faking
+a [`IServiceScopeFactory`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory?view=net-9.0-pp).
+
+The container implements `System.IServiceProvider`.
+
+```C#
+var container = IoC.CreateServiceProvider();
+var mock = container.AddService<IService>();
+container.AddService(someServiceInstance);
+var fixture = container.AddServiceAsFixture<SomeServiceType>();
+
+// Use:
+var sp = container as IServiceProvider;
+var service = sp.GetRequiredService<IService>();
+```

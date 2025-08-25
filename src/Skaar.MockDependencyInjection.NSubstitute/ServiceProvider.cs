@@ -1,35 +1,29 @@
-using Moq;
 using Skaar.MockDependencyInjection.Contracts;
 using Skaar.MockDependencyInjection.Resolving;
 
-namespace Skaar.MockDependencyInjection.Moq;
+namespace Skaar.MockDependencyInjection.NSubstitute;
 
 public class ServiceProvider : ServiceProvider<ServiceProvider>
 {
     protected override IArgumentResolver CreateArgumentResolver(Type serviceType)
     {
         var key = new ResolverSpecification(serviceType, null);
-        return new MockArgumentResolver(key, new MoqConfig(defaultValueProvider: DefaultValueProvider.Mock));
+        return new NSubstituteArgumentResolver(key);
     }
 
     /// <summary>
-    /// Create a mock object for the specified type <typeparamref name="T"/>
+    /// Create a fake object for the specified type <typeparamref name="T"/>
     /// and add it to the service collection.
     /// </summary>
-    public Mock<T> AddService<T>(
-        MockBehavior behavior = MockBehavior.Loose,
-        bool callBase = true,
-        DefaultValueProvider? defaultValueProvider = null
-        ) where T : class
+    public T AddService<T>() where T : class
     {
         var key = ResolverSpecification.New<T>();
-        if (Resolvers[key] is not MockArgumentResolver resolver)
+        if (Resolvers[key] is not NSubstituteArgumentResolver resolver)
         {
-            var config = new MoqConfig(behavior, callBase, defaultValueProvider);
-            resolver = new MockArgumentResolver(key, config);
+            resolver = new NSubstituteArgumentResolver(key);
             AddResolver(resolver);
         }
-        return (Mock<T>)resolver.Mock;
+        return (T)resolver.Resolve();
     }
 
     /// <summary>

@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
 using Skaar.MockDependencyInjection.Resolving;
-using System.ComponentModel.Design;
 
 namespace Skaar.MockDependencyInjection.Extensions;
 
