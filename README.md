@@ -251,6 +251,15 @@ Multiple calls to this method will return the same instance.
 
 [Example](tests/Skaar.MockDependencyInjection.Moq.Tests/Fixture/TargetWithoutDependenciesTests.cs)
 
+#### Resolve as mock/fake/substitute
+
+It is usually possible to resolve the fixture to a mock/fake/substitute
+of the test target. Virrtual methods may be set up and verified.
+
+[Example (Moq)](tests/Skaar.MockDependencyInjection.Moq.Tests/Fixture/ResolveAsMockTests.cs)
+[Example (FakeItEasy)](tests/Skaar.MockDependencyInjection.FakeItEasy.Tests/Fixture/ResolveAsFakeTests.cs)
+[Example (NSubstitute)](tests/Skaar.MockDependencyInjection.NSubstitute.Tests/Fixture/ResolveAsSubstituteTests.cs)
+
 #### Use log sink
 
 When depending on `Microsoft.Extensions.Logging.ILogger<out TCategoryName>` and `TCategoryName`

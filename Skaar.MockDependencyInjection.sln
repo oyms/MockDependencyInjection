@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.FakeItEasy", "src\Skaar.MockDependencyInjection.FakeItEasy\Skaar.MockDependencyInjection.FakeItEasy.csproj", "{ECEB5436-DF25-4692-A456-C21445FF0863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.FakeItEasy.Tests", "Skaar.MockDependencyInjection.FakeItEasy.Tests\Skaar.MockDependencyInjection.FakeItEasy.Tests.csproj", "{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skaar.MockDependencyInjection.FakeItEasy.Tests", "tests\Skaar.MockDependencyInjection.FakeItEasy.Tests\Skaar.MockDependencyInjection.FakeItEasy.Tests.csproj", "{B537E27C-6840-4C2D-B2BE-68BD39CDFDB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
