@@ -6,7 +6,15 @@ class ServiceProviderWrapper(IServiceProvider services) : ServiceContainer
 {
     public override bool TryResolve(Type type, [NotNullWhen(true)] out object? instance)
     {
-        instance = services.GetService(type);
-        return instance != null;
+        try
+        {
+            instance = services.GetService(type);
+            return instance != null;
+        }
+        catch
+        {
+            instance = null;
+            return false;       
+        }
     }
 }

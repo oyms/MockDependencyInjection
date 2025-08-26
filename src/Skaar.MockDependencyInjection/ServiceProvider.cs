@@ -52,4 +52,6 @@ public abstract class ServiceProvider<T> : IServiceProvider where T:ServiceProvi
         Resolvers.Add(newResolver);
         return newResolver.Resolve();
     }
+    
+    public static implicit operator ServiceContainer(ServiceProvider<T> provider) => new ServiceProviderWrapper(provider);
 }

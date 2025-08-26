@@ -313,3 +313,23 @@ var fixture = container.AddServiceAsFixture<SomeServiceType>();
 var sp = container as IServiceProvider;
 var service = sp.GetRequiredService<IService>();
 ```
+
+A container can be converted to a `ServiceContainer` for use in fixtures,
+to provide the same instances to be used in multiple fixtures.
+
+```C#
+public record TestType(TestType1 Type1, TestType2 Type2);
+public interface TestType1;
+public interface TestType2;
+
+var serviceProvider = IoC.CreateServiceProvider();
+_ = serviceProvider.AddService<TestType1>();
+var fixture0 = IoC.CreateFixture<TestType>().Use(serviceProvider);
+var fixture1 = IoC.CreateFixture<TestType>().Use(serviceProvider);
+
+var result0 = fixture0.Resolve();
+var result1 = fixture1.Resolve();
+
+Console.WriteLine(object.ReferenceEquals(result0.Type1, result1.Type1)); //true
+Console.WriteLine(object.ReferenceEquals(result0.Type2, result1.Type2)); //true
+```
