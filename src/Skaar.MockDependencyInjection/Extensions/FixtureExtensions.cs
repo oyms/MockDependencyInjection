@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
+using Microsoft.Extensions.Options;
 using Skaar.MockDependencyInjection.Resolving;
 
 namespace Skaar.MockDependencyInjection.Extensions;
@@ -39,5 +40,17 @@ public static class FixtureExtensions
     public static TFixture UseLogSink<T, TFixture>(this Fixture<T, TFixture> fixture, Action<string>? sink = null) where T : class where TFixture : Fixture<T, TFixture>
     {
         return fixture.Use(new MicrosoftLoggerResolver(sink ?? Console.Out.WriteLine));
+    }
+
+    /// <summary>
+    /// Adds a dependency resolver to <seealso cref="IOptions{TConfig}"/>.
+    /// </summary>
+    /// <returns>This fixture</returns>
+    /// <remarks>Uses an <seealso cref="OptionsWrapper{TConfig}">options wrapper</seealso>.</remarks>
+    public static TFixture UseOptions<T, TFixture, TConfig>(this Fixture<T, TFixture> fixture,
+        TConfig config) where T : class where TFixture : Fixture<T, TFixture> where TConfig : class
+    {
+        fixture.Arg(new OptionsWrapper<TConfig>(config));
+        return (TFixture) fixture;
     }
 }
