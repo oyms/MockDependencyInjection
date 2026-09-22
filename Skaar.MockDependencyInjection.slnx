@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".github/workflows/nuget-publish.yml" />
+    <File Path="src/CommonProps.targets" />
+    <File Path="README.md" />
+    <File Path="resources/logo.png" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Skaar.MockDependencyInjection.FakeItEasy.Tests/Skaar.MockDependencyInjection.FakeItEasy.Tests.csproj" />
+    <Project Path="tests/Skaar.MockDependencyInjection.Moq.Tests/Skaar.MockDependencyInjection.Moq.Tests.csproj" />
+    <Project Path="tests/Skaar.MockDependencyInjection.NSubstitute.Tests/Skaar.MockDependencyInjection.NSubstitute.Tests.csproj" />
+  </Folder>
+  <Project Path="src/Skaar.MockDependencyInjection.AutoFixture/Skaar.MockDependencyInjection.AutoFixture.csproj" />
+  <Project Path="src/Skaar.MockDependencyInjection.FakeItEasy/Skaar.MockDependencyInjection.FakeItEasy.csproj" />
+  <Project Path="src/Skaar.MockDependencyInjection.Moq/Skaar.MockDependencyInjection.Moq.csproj" />
+  <Project Path="src/Skaar.MockDependencyInjection.NSubstitute/Skaar.MockDependencyInjection.NSubstitute.csproj" />
+  <Project Path="src/Skaar.MockDependencyInjection/Skaar.MockDependencyInjection.csproj" />
+</Solution>
