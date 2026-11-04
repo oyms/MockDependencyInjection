@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/SolutionItems/">
     <File Path=".github/workflows/nuget-publish.yml" />
+    <File Path="global.json" />
     <File Path="src/CommonProps.targets" />
     <File Path="README.md" />
     <File Path="resources/logo.png" />
